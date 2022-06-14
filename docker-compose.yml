@@ -1,0 +1,11 @@
+version: '2'
+services:
+  dns:
+    restart: always
+    image: davedeveloper/dnsmasq-rest-api-docker:latest
+    volumes:
+      - ./config.php:/opt/dnsmasq-rest-api/www/config.php
+    ports:
+      - "53:53/udp"
+      - "5380:80/tcp"
+
