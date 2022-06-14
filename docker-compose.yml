@@ -8,4 +8,24 @@ services:
     ports:
       - "53:53/udp"
       - "5380:80/tcp"
+    networks:
+      - LocalDevNet
+  proxy:
+    restart: always
+    ports:
+      - "1080:1080"
+    image: kallqvist/microsocks
+    networks:
+      - LocalDevNet
+networks:
+  LocalDevNet:
+    name: LocalDevNet
+    external: true
+    ipam:
+     config:
+       - subnet: 192.168.18.0/24
+         gateway: 192.168.18.1
+         aux_addresses:
+          dns: 192.168.18.253
+          proxy: 192.168.18.254
 
