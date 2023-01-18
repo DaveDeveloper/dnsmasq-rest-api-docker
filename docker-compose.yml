@@ -8,4 +8,6 @@ services:
     ports:
       - "53:53/udp"
       - "5380:80/tcp"
-
+    networks:
+      LocalDevNet:
+        ipv4_address: 172.27.0.254
